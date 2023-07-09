@@ -14,14 +14,18 @@ namespace Test
         [Fact]
         public void DecodeTest() 
         {
-            Assert.Equal(new float[][] {new float[] {1, 2 , 1}, new float[] {1, 2 ,0} },LinearSystem.Decode(testInput));
+            Assert.Equal(new double[][] {new double[] {1, 2 , 1}, new double[] {1, 2 ,0} },LinearSystem.Decode(testInput));
         }
         [Fact]
         public void LinearSubtractionTest()
         {
             var test = LinearSystem.Decode(testInput);
             LinearSystem.subtractLinear(test[0], test[1], 2);
-            Assert.Equal(new float[] { -1, -2, 1 }, test[0]); 
+            Assert.Equal(new double[] { -1, -2, 1 }, test[0]); 
+        }
+        [Fact]
+        public void GcdTest() {
+            Assert.Equal(12, Fractal.Gcd(60, 24));
         }
     }
 }

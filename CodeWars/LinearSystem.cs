@@ -7,26 +7,73 @@ using System.Threading.Tasks;
 
 namespace CodeWars
 {
+    public class Fractal
+    {
+        public static int Gcd(int number1, int number2)
+        {
+            Console.WriteLine($"{number1} {number2}");
+            if(number1 == 0)
+            {
+                return number2;
+            }
+            else
+            {
+                return Gcd(number2 %  number1, number1);
+            }
+        }
+        public int number { get; private set; }
+        public int divisor { get; private set; }
+        public Fractal(int _number) 
+        {
+            number = _number;
+            divisor = 1;
+        }
+        public Fractal(int _number, int _divisor)
+        {
+            number = _number;
+            divisor = _divisor;
+        }
+        public float ToFloat()
+        {
+            return number / divisor;
+        }
+        public void Add(int value)
+        {
+            number += divisor * value;
+        }
+        public void Add(Fractal value) 
+        {
+            
+        }
+        public void Multiply(int value)
+        {
+            number *= value;
+        }
+        public void Multiply (Fractal value)
+        {
 
+        }
+
+    }
     public class LinearSystem
     {
-        static public float[][] Decode(string input)
+        static public double[][] Decode(string input)
         {
-            return input.Split("\r\n").Select(x=>x.Split(' ').Select(i => float.Parse(i)).ToArray()).ToArray();
+            return input.Split("\r\n").Select(x=>x.Split(' ').Select(i => double.Parse(i)).ToArray()).ToArray();
         }
-        public static void subtractLinear(float[] subtractedLine, float[]subtractLine,float times)
+        public static void subtractLinear(double[] subtractedLine, double[]subtractLine,double times)
         {
             for(int i = 0; i < subtractedLine.Length; i++)
             {
                 subtractedLine[i] -= times * subtractLine[i];
             }
         }
-        public static void draw(float[][] stelsel)
+        public static void draw(double[][] stelsel)
         {
-            foreach (float[] stelselLine in stelsel)
+            foreach (double[] stelselLine in stelsel)
             {
                 Console.Write(stelselLine[0]);
-                foreach (float f in stelselLine.Skip(1))
+                foreach (double f in stelselLine.Skip(1))
                 {
                     if(0 <= f)
                     {
@@ -53,7 +100,7 @@ namespace CodeWars
                     {
                         zeroRow = false;
                         //makes the first non zero element in the list 1
-                        float firstNonZero = row[indexFirstNonZero];
+                        double firstNonZero = row[indexFirstNonZero];
                         for (int i = 0; i < row.Length; i++)
                         {
                             row[i] /= firstNonZero;
@@ -85,7 +132,7 @@ namespace CodeWars
                 {
                     i++;
                 }
-                results[i] = linearSystem[currentRow].Last();
+                results[i] = (float)linearSystem[currentRow].Last();
             }
             StringBuilder builder = new StringBuilder($"SOLUTION=({results[0].ToString()};");
             foreach (var f in results.Skip(1)) { builder.Append($" {f};"); };
