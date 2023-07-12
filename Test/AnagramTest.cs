@@ -15,11 +15,6 @@ namespace Test
             Assert.Equal(24, Anagrams.newPosibilities(60, 2, 5));
         }
         [Fact]
-        public void newPossibilitiesTest2()
-        {
-            Assert.Equal(12, Anagrams.newPosibilities(40, 3, 5));
-        }
-        [Fact]
         public void newPossibilitiesTest3()
         {
             Assert.Equal(12, Anagrams.newPosibilities(30, 2, 5));

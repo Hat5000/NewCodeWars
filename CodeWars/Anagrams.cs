@@ -39,29 +39,16 @@ namespace CodeWars
             {
                 possibilities /= Fibonnacci(letterCount);
             }
-
-
             //Calculating
             long result = 1;
             int lengthWord = value.Length;
             foreach(var chr in value)
             {
-                foreach (var item in lettersCount)
-                {
-                    Console.Write($"{item} ");
-                }
-                Console.WriteLine();
-                Console.WriteLine($"Current possibilities {possibilities}");
                 int index = 0;
-                foreach(var letterCount in lettersCount)
+                foreach(var letterCount in lettersCount.Take(charToIndex(chr)))
                 {
                     if(letterCount != 0)
                     {
-                        if (index == charToIndex(chr))
-                        {
-                            break;
-                        }
-                        Console.WriteLine($"Char: {Convert.ToChar(index +'A')} Count: {letterCount} Plus:{newPosibilities(possibilities, letterCount, lengthWord)}");
                         result += newPosibilities(possibilities, letterCount, lengthWord);
                     }
                     index++;
