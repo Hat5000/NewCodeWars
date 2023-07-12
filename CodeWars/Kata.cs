@@ -45,6 +45,19 @@ namespace CodeWars
                     number = number * 10 + nextCifer;
                     i++;
                 }
+                if(i + 1 < expression.Length && expression[i + 1] == '.')
+                {
+                    i++;
+                    double afterKomma = 0;
+                    int counter = 1;
+                    while (i + 1 < expression.Length && Double.TryParse(expression[i + 1].ToString(), out nextCifer))
+                    {
+                        afterKomma += nextCifer / Math.Pow(10, counter);
+                        counter++;
+                        i++;
+                    }
+                    number += afterKomma;
+                }
                 return number;
             }
         }
@@ -68,19 +81,19 @@ namespace CodeWars
                 i++;
                 numbers.Add(GetFactor(withoutSpaces, ref i));
             }
-            Console.WriteLine(withoutSpaces);
-            Console.WriteLine("Operations");
-            foreach (var operation in operations)
-            {
+            //Console.WriteLine(withoutSpaces);
+            //Console.WriteLine("Operations");
+            //foreach (var operation in operations)
+            //{
 
-                Console.Write(operation.ToString());
-            }
-            Console.WriteLine("\nNumbers");
-            foreach (var number in numbers)
-            {
-                Console.Write($"{number.ToString()} ");
-            }
-            Console.WriteLine("\n");
+            //    Console.Write(operation.ToString());
+            //}
+            //Console.WriteLine("\nNumbers");
+            //foreach (var number in numbers)
+            //{
+            //    Console.Write($"{number.ToString()} ");
+            //}
+            //Console.WriteLine("\n");
             foreach (var symbol in _orderOfOperations)
             {
                 var possibleSymbols = symbol.Item1;
