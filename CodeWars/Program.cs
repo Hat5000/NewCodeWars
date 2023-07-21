@@ -2,4 +2,4 @@
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 
- Console.WriteLine(Kata.calculate("1.01 * 6+1"));
+ Console.WriteLine(Immortal.ElderAge(8,5,1,100));
